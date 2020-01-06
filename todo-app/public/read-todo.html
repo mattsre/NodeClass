@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SE373 | Assignment One - Read TODO</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="m-3">Read TODOs</h2>
+      <ol class="results list-group"></ol>
+    </div>
+  </body>
+  <script>
+    fetch("./todo")
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        const results = document.querySelector(".results");
+        json.map(todo => {
+          let item = document.createElement("li");
+          let checkboxDiv = document.createElement("div");
+          checkboxDiv.classList.add("custom-control", "custom-checkbox");
+          let checkbox = document.createElement("input");
+          let checkboxLabel = document.createElement("label");
+          checkbox.type = "checkbox";
+          checkbox.classList.add("custom-control-input");
+          checkbox.id = `todo${todo.id}Checkbox`;
+          checkbox.checked = todo.completed;
+          checkboxLabel.classList.add("custom-control-label");
+          checkboxLabel.innerText = "Done?";
+          checkboxLabel.htmlFor = checkbox.id;
+          item.classList.add("list-group-item");
+          item.innerText = `${todo.id}. ${todo.title}`;
+          checkboxDiv.appendChild(checkbox);
+          checkboxDiv.appendChild(checkboxLabel);
+          item.appendChild(checkboxDiv);
+          results.appendChild(item);
+        });
+      });
+  </script>
+</html>
