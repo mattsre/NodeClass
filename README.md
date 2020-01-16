@@ -8,3 +8,10 @@
 - `cd` into todo-app folder
 - `npm i`
 - `npm start`
+
+### Assignment Two
+
+- clone repo
+- `cd` into lab2react folder
+- `npm i`
+- `npm start`
