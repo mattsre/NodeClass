@@ -11,7 +11,13 @@
 
 ### Assignment Two
 
+For React implementation:
+
 - clone repo
 - `cd` into lab2react folder
 - `npm i`
 - `npm start`
+
+For Handlebars implementation:
+
+- WIP
