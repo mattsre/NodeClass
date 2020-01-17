@@ -14,7 +14,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HomeView from "./views/Home";
 import AboutView from "./views/About";
 import FormView from "./views/Form";
-import ResultsView from "./views/Results";
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,9 +56,6 @@ export default () => {
             </Route>
             <Route path="/form">
               <FormView />
-            </Route>
-            <Route path="/results">
-              <ResultsView />
             </Route>
             <Route path="/">
               <HomeView />
