@@ -1,0 +1,15 @@
+{{> default }}
+
+<div class="container">
+    <h1>Grid Size</h1>
+    <form action="/colors" method="POST">
+        <select name="gridSize" class="custom-select custom-select-lg mb-3">
+            {{#each sizeOptions}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+        <button class="btn btn-primary" type="submit">Generate</button>
+    </form>
+
+    {{ generateGrid size }}
+</div>
