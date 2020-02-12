@@ -20,4 +20,7 @@ For React implementation:
 
 For Handlebars implementation:
 
-- WIP
+- clone repo
+- `cd` into lab2hbs folder
+- `npm i`
+- `npm start`
