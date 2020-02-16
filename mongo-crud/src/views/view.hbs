@@ -1,0 +1,45 @@
+{{> template}}
+
+<div class="container-fluid">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Department</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each employees}}
+            <tr>
+                <td scope="row">{{this._id}}</td>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.department}}</td>
+                <td>{{this.startDate}}</td>
+                <td>{{this.jobTitle}}</td>
+                <td>${{this.salary}}</td>
+                <td>
+                    <a class="btn btn-warning" href="/update/{{this._id}}" role="button">Update</a>
+                    <a class="btn btn-danger" href="/delete/{{this._id}}" role="button">Delete</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -24,3 +24,10 @@ For Handlebars implementation:
 - `cd` into lab2hbs folder
 - `npm i`
 - `npm start`
+
+### Week 6 Assignment (Mongo CRUD)
+
+- clone repo
+- `cd` into mongo-crud folder
+- `npm i`
+- `npm start`

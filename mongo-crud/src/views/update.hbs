@@ -1,0 +1,42 @@
+{{> template}}
+
+<div class="container mt-3">
+    <form method="POST" action="/api/update/{{employee._id}}">
+        <div class="row">
+            <div class="col">
+                <label for="firstName"><b>First Name</b></label>
+                <input type="text" class="form-control" id="firstName" placeholder="First name"
+                    value="{{employee.firstName}}" name="firstName">
+            </div>
+            <div class="col">
+                <label for="lastName"><b>Last Name</b></label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last name"
+                    value="{{employee.lastName}}" name="lastName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="departmentSelect"><b>Department</b></label>
+                    <select class="form-control" id="departmentSelect" name="department">
+                        <option>Product</option>
+                        <option>Engineering</option>
+                        <option>Legal</option>
+                        <option>Sales</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <label for="jobTitle"><b>Job Title</b></label>
+                <input type="text" class="form-control" id="jobTitle" placeholder="Job title"
+                    value="{{employee.jobTitle}}" name="jobTitle">
+            </div>
+        </div>
+        <label for="startDate"><b>Start Date</b></label>
+        <input type="date" class="form-control" id="startDate" name="startDate">
+        <label for="salary"><b>Salary</b></label>
+        <input type="text" class="form-control" id="salary" placeholder="50000" value="{{employee.salary}}"
+            name="salary">
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
