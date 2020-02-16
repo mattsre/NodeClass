@@ -30,4 +30,5 @@ For Handlebars implementation:
 - clone repo
 - `cd` into mongo-crud folder
 - `npm i`
+- create a .env file created at the project root with an environment variable DB_HOST in it, example: DB_HOST=mongodb://localhost:27017/Empl
 - `npm start`
