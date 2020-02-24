@@ -1,16 +1,26 @@
 require("dotenv").config();
+const Sentry = require('@sentry/node');
+
+Sentry.init({ dsn: process.env.SENTRY_DSN });
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const hbs = require("hbs");
 const app = express();
 
+// Setup Sentry request handlers
+app.use(Sentry.Handlers.requestHandler());
+
 // Database setup
-mongoose.connect(process.env.DB_HOST, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-});
+try {
+  mongoose.connect(process.env.DB_HOST, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  });
+} catch (error) {
+  throw new Error(error.message)
+}
 
 mongoose.connection.on(
   "error",
@@ -32,5 +42,8 @@ const APIRouter = require("./routes/api");
 
 app.use("/", ViewRouter);
 app.use("/api", APIRouter);
+
+// Use Sentry error handler, must be after all routers
+app.use(Sentry.Handlers.errorHandler())
 
 app.listen(3000);
