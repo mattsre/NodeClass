@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+    reverse-proxy:
+        image: traefik:2.1
+        ports:
+            - "80:80"
+            - "8080:8080"
+        volumes: 
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./traefik.yml:/etc/traefik/traefik.yml
+
+    mongodb:
+        image: mongo:4.2
+        restart: always
+        env_file: 
+            ./mongo.env
+
+    webapp:
+        build: ./Dockerfile
+        restart: always
+        env_file: 
+            ./.env
+        labels:
+            - "traefik.http.routers.webapp.rule=Host(`webapp.docker.localhost`)"
+
+volumes: 
+    mongodb-data:
